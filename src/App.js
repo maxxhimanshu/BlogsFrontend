@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom'
+import GetBlogs from "./components/GetBlogs"
+import DogsCom from './components/dogs'
+import CreateBlogs from "./components/CreateBlogs"
 
-function App() {
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div>
 
-export default App;
+      
+      <Router>
+        <Routes>
+        
+        <Route  path="/" element={
+        <div>
+          <h1>Blogs Project frontend</h1>
+          <Link to="/show" ><button > GetBlogs</button></Link>
+          <br/>          <br/>
+          <Link to="/dogs" ><button > Dogs</button></Link>          <br/>          <br/>
+          <Link to="/blogs" ><button > Create Blogs</button></Link>
+
+          </div>
+        
+        } />
+          <Route  path="/show" element={<GetBlogs/>} />
+          <Route  path="/dogs" element={<DogsCom/>} />
+          <Route  path="/blogs" element={<CreateBlogs/>} />
+        
+        </Routes>
+          
+      </Router>
+
+
+    </div>
+  )
+}
+export default App
