@@ -21,6 +21,14 @@ const GetBlogs = () => {
         })
     }, [])
     
+function DeleteEntries(id){
+    fetch(`http://localhost:3001/blogs/${id}`,{
+        method: "DELETE",
+    }).then((response) => response.json().then(data =>console.log(data)))
+}
+
+
+
     function updateBlog(index) {
         setStatus(false)
         setTitle(blogs[index].title)
@@ -80,6 +88,8 @@ const GetBlogs = () => {
                                     <td>{data.subcategory}</td>
                                     <td>{data.tags}</td>
                                     <td><button onClick={() => updateBlog(index)}>Edit</button></td>
+                                    <td><button onClick={() => DeleteEntries(data._id)}>delete</button></td>
+
                                 </tr>
                             ))
                         }
